@@ -3,9 +3,25 @@ pipeline {
 
     stages {
 
-        stage('Test Pipeline') {
+        stage('Test') {
             steps {
-                sh 'echo "Jenkins is working 🚀"'
+                sh 'echo "Jenkins working 🚀"'
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform apply -auto-approve'
+                }
             }
         }
     }
