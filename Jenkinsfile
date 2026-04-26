@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+    agent { label 'agent-1' }
 
     stages {
 
         stage('Test') {
             steps {
-                sh 'echo "Jenkins working 🚀"'
+                sh 'echo "Running on agent 🚀"'
+                sh 'hostname'
             }
         }
 
